@@ -1,3 +1,5 @@
+# pycolmap has to be imported before anything else.
+import pycolmap
 import torch
 image_path = 'images/video1-00150.jpg' 
 model, results, plt = torch.hub.load('mtaimooradil/DeepSingleImageCalibration',
