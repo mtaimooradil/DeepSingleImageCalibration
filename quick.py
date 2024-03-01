@@ -1,12 +1,7 @@
-# pycolmap has to be imported before anything else.
-import pycolmap
-import torch
-image_path = 'images/video1-00150.jpg' 
-model, results, plt = torch.hub.load('mtaimooradil/DeepSingleImageCalibration',
-                            'calib', image_path=image_path, force_reload=False)
-if image_path is not None:
-    print(results)
-    plt.savefig('image.png')
-    print("Saved plot to image.png")
-else:
-    print(model)
+from calib.demo import DeepCalibration
+
+image_path = r'E:\PhD Work (Local)\ML\Calibration\DeepSingleImageCalibration\images\img201.png'
+
+calib = DeepCalibration()
+params = calib.calibrate_from_path(image_path)
+print(params)
