@@ -9,8 +9,6 @@ parser.add_argument('--save_path', type=str, required = True, help='The path whe
 
 args = parser.parse_args()
 
-# image_path = r'E:\PhD Work (Local)\ML\Calibration\DeepSingleImageCalibration\images\img201.png'
-# save_path = r'E:\PhD Work (Local)\ML\Calibration\DeepSingleImageCalibration\calib_params2.pkl'
 
 calib = DeepCalibration()
 params = calib.calibrate_from_path(Path(args.image_path))
