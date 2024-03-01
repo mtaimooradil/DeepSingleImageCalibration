@@ -33,7 +33,7 @@ def adjust_rho_distortion(rho, fy_px, k1, w, h):
         height=h,
         params=[fy_px, cx, cy, k1, 0.],
     )
-    normalized_coords = np.array(camera.image_to_world(image_points))
+    normalized_coords = np.array(camera.cam_from_img(image_points))
     camera_no_distortion = pycolmap.Camera(
         model='RADIAL',
         width=w,
@@ -41,7 +41,7 @@ def adjust_rho_distortion(rho, fy_px, k1, w, h):
         params=[fy_px, cx, cy, 0.0, 0.0],
     )
     reprojected_points = np.array(
-        camera_no_distortion.world_to_image(normalized_coords))
+        camera_no_distortion.img_from_cam(normalized_coords))
     tau = (reprojected_points[1] - cy) / h
     return tau
 
@@ -60,7 +60,7 @@ class DeepCalibration:
         self.model = model.to(device).eval()
         self.device = device
 
-    def calibrate(self, image, force_pinhole=True):
+    def calibrate(self, image, force_pinhole=False):
         h, w, _ = image.shape
         image = numpy_image_to_torch(resize_image(image)).unsqueeze(0)
         pred = self.model({'image': image.to(self.device)})

@@ -84,7 +84,7 @@ def main():
             height=h,
             params=[fy_px, u0, v0, k1, 0.],
         )
-        normalized_coords = np.array(camera.image_to_world(img_pts))
+        normalized_coords = np.array(camera.cam_from_img(img_pts))
         camera_no_distortion = pycolmap.Camera(
             model='RADIAL',
             width=w,
@@ -92,7 +92,7 @@ def main():
             params=[fy_px, u0, v0, 0.0, 0.0],
         )
         back_to_image = np.array(
-            camera_no_distortion.world_to_image(normalized_coords))
+            camera_no_distortion.img_from_cam(normalized_coords))
         tau = (back_to_image[1] - v0) / h
 
         pitch = np.arctan(tau/(fy_px/h))
