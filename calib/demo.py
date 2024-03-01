@@ -1,3 +1,9 @@
+# pycolmap needs to be imported before anything else.
+try:
+    import pycolmap
+except ImportError:
+    pycolmap = None
+
 from pathlib import Path
 
 import numpy as np
@@ -8,10 +14,7 @@ from calib.calib.datasets.view import (
 from calib.calib.datasets.viz_2d import plot_row
 from calib.calib.utils.experiments import load_experiment
 
-try:
-    import pycolmap
-except ImportError:
-    pycolmap = None
+
 
 
 CHECKPOINT_URL = 'https://github.com/AlanSavio25/DeepSingleImageCalibration/releases/download/v1/checkpoint_best.tar'

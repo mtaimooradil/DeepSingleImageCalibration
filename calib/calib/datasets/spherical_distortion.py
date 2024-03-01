@@ -1,9 +1,10 @@
+# pycolmap needs to be imported before anything else.
+import pycolmap
 import numpy as np
 import imageio
 import math as m
 from calib.calib.datasets.interpol import *
 from numpy.lib.scimath import sqrt as csqrt
-import pycolmap
 
 
 def deg2rad(deg):

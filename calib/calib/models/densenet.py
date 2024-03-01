@@ -1,3 +1,5 @@
+# pycolmap needs to be imported before anything else.
+import pycolmap
 import torch
 import torchvision
 from .base_model import BaseModel
@@ -6,7 +8,6 @@ import numpy as np
 from copy import deepcopy
 from calib.calib.models.utils_densenet import _DenseBlock, _Transition
 from torch.nn import Identity
-import pycolmap
 
 
 class DenseNet(BaseModel):

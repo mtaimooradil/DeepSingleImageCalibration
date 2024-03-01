@@ -1,3 +1,5 @@
+# pycolmap needs to be imported before anything else.
+import pycolmap
 import argparse
 from calib import logger
 from pathlib import Path
@@ -8,7 +10,6 @@ from omegaconf import OmegaConf
 from calib.calib.utils.experiments import load_experiment
 from calib.calib.utils.helper_functions import *
 from calib.calib.datasets.viz_2d import *
-import pycolmap
 import tqdm
 import pandas as pd
 import os
